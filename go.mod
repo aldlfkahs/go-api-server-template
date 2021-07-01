@@ -1,4 +1,4 @@
-module cloud-credential-api-server
+module github.com/tmax-cloud/cloud-credential-api-server
 
 go 1.15
 

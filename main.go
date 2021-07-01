@@ -1,7 +1,7 @@
 package main
 
 import (
-	"cloud-credential-api-server/billing"
+	"github.com/tmax-cloud/cloud-credential-api-server/billing"
 
 	"k8s.io/klog"
 
