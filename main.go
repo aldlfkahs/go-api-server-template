@@ -2,6 +2,7 @@ package main
 
 import (
 	"cloud-credential-api-server/billing"
+	"fmt"
 
 	"k8s.io/klog"
 
@@ -12,6 +13,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/billing", serveBilling)
+	mux.HandleFunc("/test", serveTest)
 
 	klog.Info("Starting Cloud Credential server...")
 	klog.Flush()
@@ -31,4 +33,26 @@ func serveBilling(res http.ResponseWriter, req *http.Request) {
 	default:
 		//error
 	}
+}
+
+func serveTest(res http.ResponseWriter, req *http.Request) {
+	switch req.Method {
+	case http.MethodGet:
+		TestGet(res, req)
+	case http.MethodPut:
+	case http.MethodOptions:
+	default:
+		//error
+	}
+}
+
+func TestGet(res http.ResponseWriter, req *http.Request) {
+	queryParams := req.URL.Query()
+
+	keys := queryParams["key"]
+
+	for _, k := range keys {
+		fmt.Println(k)
+	}
+	fmt.Println()
 }
