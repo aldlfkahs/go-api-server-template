@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-test-api-server
+  labels:
+    togomi: go-test-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      togomi: go-test-api-server
+  template:
+    metadata:
+      name: go-test-api-server
+      labels:
+        togomi: go-test-api-server
+    spec:
+      containers:
+        - name: go-test-api-server
+          image: aldlfkahs/go-simple-api-server:latest
+          imagePullPolicy: IfNotPresent
+

@@ -14,6 +14,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/billing", serveBilling)
 	mux.HandleFunc("/test", serveTest)
+	mux.HandleFunc("/hello", serveHello)
 
 	klog.Info("Starting Cloud Credential server...")
 	klog.Flush()
@@ -29,6 +30,19 @@ func serveBilling(res http.ResponseWriter, req *http.Request) {
 	case http.MethodGet:
 		billing.Get(res, req)
 	case http.MethodPut:
+	case http.MethodOptions:
+	default:
+		//error
+	}
+}
+
+
+func serveHello(res http.ResponseWriter, req *http.Request) {
+	switch req.Method {
+	case http.MethodGet:
+		fmt.Println("You call GET /hello !!")
+	case http.MethodPost:
+		fmt.Println("You call POST /hello !!")
 	case http.MethodOptions:
 	default:
 		//error
