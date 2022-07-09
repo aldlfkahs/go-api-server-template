@@ -13,13 +13,13 @@ func main() {
 	mux.HandleFunc("/test", serveTest)
 	mux.HandleFunc("/hello", serveHello)
 
-	klog.Info("Starting Cloud Credential server...")
+	klog.Info("Starting Go test api server...")
 	klog.Flush()
 
 	if err := http.ListenAndServe(":80", mux); err != nil {
 		klog.Errorf("Failed to listen and serve test-api-server: %s", err)
 	}
-	klog.Info("Terminate test-api-server")
+	klog.Info("Terminate Go test api server")
 }
 
 
